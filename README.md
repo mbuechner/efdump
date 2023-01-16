@@ -1,4 +1,4 @@
-![Java CI with Maven](https://github.com/mbuechner/efdump/workflows/Java%20CI%20with%20Maven/badge.svg)
+![Java CI with Maven](https://github.com/mbuechner/efdump/workflows/Java%20CI%20with%20Maven/badge.svg) [![Maven Package](https://github.com/mbuechner/efdump/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/mbuechner/efdump/actions/workflows/maven-publish.yml)
 # efdump - A download/dumping tool for [Entity Facts](http://www.dnb.de/DE/Service/DigitaleDienste/EntityFacts/entityfacts_node.html) authority data service 
 
 Version: 2.1.3 (2023-01-16)
