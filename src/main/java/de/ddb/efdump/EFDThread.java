@@ -1,5 +1,5 @@
 /* 
- * Copyright 2016-2018, Michael Büchner <m.buechner@dnb.de>
+ * Copyright 2016-2023, Michael Büchner <m.buechner@dnb.de>
  * Deutsche Digitale Bibliothek
  * c/o Deutsche Nationalbibliothek
  * Informationsinfrastruktur
@@ -72,10 +72,15 @@ public class EFDThread implements Runnable {
 
         try {
             con = (HttpURLConnection) new URL(url).openConnection();
+            con.setInstanceFollowRedirects(false);
             con.setRequestProperty("Accept-Language", language);
             con.connect();
 
-            if (con.getResponseCode() != HttpURLConnection.HTTP_OK) {
+            if(con.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+                final String loc = con.getHeaderField("Location");
+                LOG.warn("{}: Response: {}. {} attempt(s). Redirects to {}. Record not written to dump.", url, con.getResponseMessage(), runCount, loc);
+                done = true;
+            } else if (con.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 final JsonNode node = OM.readTree(con.getErrorStream());
                 final String errorText = node.get("Error").textValue();
                 if (errorText.contains("currently not supported by Entity Facts")) {
