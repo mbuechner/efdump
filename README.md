@@ -1,6 +1,6 @@
 # efdump - A download/dumping tool for [Entity Facts](http://www.dnb.de/DE/Service/DigitaleDienste/EntityFacts/entityfacts_node.html) authority data service 
 
-Version: 2.1 (2019-07-25)
+Version: 2.1.3 (2023-01-16)
 
 Maven documentation: https://mbuechner.github.io/efdump/
 
@@ -52,6 +52,6 @@ Content of file `gndidns.csv`:
 
 ## Configuration
 ```
-	MAXTHREADRERUN = 3
-	THREADSLEEP = 1500
+MAXTHREADRERUN = 3
+THREADSLEEP = 1500
 ```
