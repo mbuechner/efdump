@@ -58,6 +58,7 @@ public class EFDThread implements Runnable {
      * @param jGenerator - Dump file to save data
      * @param runCount Which run is that?
      */
+    @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(value = "MALICIOUS_CODE", justification = "We really need a global jGenerator here.")
     public EFDThread(String url, String language, JsonGenerator jGenerator, int runCount) {
         this.url = url;
         this.language = language;
@@ -76,7 +77,7 @@ public class EFDThread implements Runnable {
             con.setRequestProperty("Accept-Language", language);
             con.connect();
 
-            if(con.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+            if (con.getResponseCode() == HttpURLConnection.HTTP_MOVED_PERM || con.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
                 final String loc = con.getHeaderField("Location");
                 LOG.warn("{}: Response: {}. {} attempt(s). Redirects to {}. Record not written to dump.", url, con.getResponseMessage(), runCount, loc);
                 done = true;

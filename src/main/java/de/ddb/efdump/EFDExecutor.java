@@ -190,14 +190,14 @@ public class EFDExecutor {
      * @param aLANGUAGES the LANGUAGES to set
      */
     public static void setLANGUAGES(Set<String> aLANGUAGES) {
-        LANGUAGES = aLANGUAGES;
+        LANGUAGES = new HashSet<>(aLANGUAGES);
     }
 
     /**
      * @return the LANGUAGES
      */
     public static Set<String> getLANGUAGES() {
-        return LANGUAGES;
+        return new HashSet<>(LANGUAGES);
     }
 
 }
