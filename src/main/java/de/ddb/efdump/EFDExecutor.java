@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
  */
 public class EFDExecutor {
 
-    protected final static String EF_URL = "http://hub.culturegraph.org/entityfacts/{ID}";
+    protected final static String EF_URL = "https://hub.culturegraph.org/entityfacts/{ID}";
     protected final static int MAXTHREADRERUN = 3;
     protected final static int THREADSLEEP = 5; // seconds
 
